@@ -18,16 +18,13 @@ def minOperations(n):
     int: The minimum number of operations required, or 0 if n is impossible
     to achieve.
     """
-    if n <= 1:
+    if (n < 2):
         return 0
-
-    operations = 0
-    factor = 2
-
-    while n > 1:
-        while n % factor == 0:
-            operations += factor
-            n //= factor
-            factor += 1
-
-    return operations
+    ops, root = 0, 2
+    while root <= n:
+        if n % root == 0:
+            ops += root
+            n = n / root
+            root -= 1
+        root += 1
+    return ops
